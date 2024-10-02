@@ -31,7 +31,7 @@ const BottomNavBar = () => {
 
   const handleNavClick = (tab, index) => {
     setActiveTab(tab);
-    triggerConfetti(index); // Trigger confetti animation
+    //triggerConfetti(index); // Trigger confetti animation
   };
 
   const triggerConfetti = (index) => {
