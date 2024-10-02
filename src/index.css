@@ -1,0 +1,368 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+  }
+  
+  .nav-pill {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110;
+  }
+  
+  /* Add this CSS to your global styles or the component's CSS file */
+.magic-button {
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #1fc8db, #1fc8db, #78f5a7, #ff6ec4);
+  background-size: 1200% 1200%;
+  -webkit-animation: magic 3s ease infinite;
+  -moz-animation: magic 3s ease infinite;
+  animation: magic 3s ease infinite;
+  border: none;
+  outline: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.magic-button:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@-webkit-keyframes magic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@-moz-keyframes magic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes magic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.accordion__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  cursor: pointer;
+  background: #333;
+  color: white;
+  border: none;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.accordion__button:hover {
+  background: #444;
+}
+
+.accordion__button:before {
+  content: '';
+}
+
+.accordion__button[aria-expanded='true'] .accordion-caret {
+  transform: rotate(90deg);
+}
+
+.accordion-caret {
+  transition: transform 0.3s;
+}
+
+/* Starry background */
+.form-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d0d;
+  overflow: hidden;
+}
+
+.starry-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(29,29,29,1) 0%, rgba(0,0,0,1) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.starry-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat 0 0;
+  animation: move-stars 60s linear infinite;
+}
+
+@keyframes move-stars {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-50%, -50%); }
+}
+
+/* Card and form styling */
+.card {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.form-title {
+  color: #ffffff;
+  font-size: 2rem;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 2rem;
+}
+
+.neon-label {
+  display: block;
+  color: #b3b3b3;
+  font-size: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.neon-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: transparent;
+  border: 2px solid #6a64f1;
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 0 0 10px #6a64f1;
+  transition: all 0.3s ease-in-out;
+}
+
+.neon-input:focus {
+  box-shadow: 0 0 20px #f4e042, 0 0 30px #e30e91, 0 0 40px #42e2f4;
+}
+
+.neon-button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  color: #ffffff;
+  background-color: #6a64f1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.neon-button:hover {
+  background-color: #42e2f4;
+  box-shadow: 0 0 20px #f4e042, 0 0 30px #e30e91, 0 0 40px #42e2f4;
+}
+
+.input-container {
+  margin-bottom: 1.5rem;
+}
+
+.flash-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  padding: 16px;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  animation: slide-in 0.5s ease, slide-out 0.5s 2.5s ease forwards;
+}
+
+.flash-message.success {
+  background-color: #4caf50;
+}
+
+.flash-message.error {
+  background-color: #f44336;
+}
+
+.flash-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flash-bar {
+  height: 4px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 8px;
+  animation: shrink-bar 3s linear forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes shrink-bar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+nav {
+  background-color: #1c1c1c;
+  padding: 0.5rem 0;
+}
+
+.nav-link {
+  transition: transform 0.2s ease;
+}
+
+.active-tab .nav-link-icon {
+  background-color: red;
+  border: 2px solid blue;
+  border-radius: 50%;
+  padding: 5px;
+  transform: scale(1.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.active-tab span {
+  color: blue;
+  font-weight: bold;
+}
+
+.nav-link-icon {
+  transition: transform 0.3s ease;
+}
+
+nav .nav-link:hover .nav-link-icon {
+  transform: scale(1.1);
+}
+
+.nav-link.active-tab .nav-link-icon {
+  transform: scale(1.2);
+}
+
+.nav-link .nav-link-icon {
+  transform: scale(1);
+}
+
+.course-slider {
+  scroll-snap-type: x mandatory;
+}
+
+.course-card {
+  width: 80%;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+@media (min-width: 640px) {
+  .course-card {
+    width: 60%;
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .course-card {
+    width: 40%;
+    max-width: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-card {
+    width: 30%;
+    max-width: 220px;
+  }
+}
+
+.stars-bg {
+  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHN0YXJ8ZW58MHx8fHwxNjE5OTc0NzQw&ixlib=rb-1.2.1&q=80&w=1080');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+
+.nav-pill {
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-pill:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-link-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #1a202c; /* Dark background for active tab */
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.active-tab .nav-link-icon-container {
+  background-color: #1a202c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border: 2px solid #3b82f6; /* Blue border for the active tab */
+}
+
+
+
+
+
+
+  
