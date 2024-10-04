@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { getCourseById, getCourseComments, postCourseComment } from '../services/CourseService';
 import RatingPopup from './RatingPopup';
-import { FaCaretRight, FaCaretDown } from 'react-icons/fa';
+import LoadingAnimation from './LoadingAnimation'
+import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 
 const CourseOverview = () => {
     const { id } = useParams();
     const [course, setCourse] = useState(null);
+    const [video, setVideo] = useState(null);
     const [comments, setComments] = useState([]);
     const [isRatingPopupOpen, setRatingPopupOpen] = useState(false);
     const [activeLecture, setActiveLecture] = useState(null);
@@ -18,9 +20,12 @@ const CourseOverview = () => {
                 const data = await getCourseById(id);
                 setCourse(data);
                 console.log(data);
+                setVideo(data.preview_url)
             } catch (error) {
                 console.error('Error fetching course details:', error);
             }
+
+
         };
         
         const fetchComments = async () => {
@@ -50,29 +55,36 @@ const CourseOverview = () => {
         setActiveLecture(activeLecture === lectureId ? null : lectureId);
     };
 
+    const handleVideoEnd = () => {
+        setVideo(course.preview_url)
+    }
+
     if (!course) {
-        return <p>Loading course details...</p>;
+        return <LoadingAnimation/>;
     }
 
     return (
         <div className="min-h-screen bg-gray-900 text-white mb-10 pb-20">
             {/* Header Image */}
-            <div className="relative h-auto w-full overflow-hidden">
-                <ReactPlayer 
-                            url={course.preview_url} 
-                            controls 
-                            className="mb-4"
-                            width="100%"
-                        />
-                <div 
-                className="absolute top-0 left-0 w-full h-1/4 bg-transparent" 
-                style={{ pointerEvents: 'auto' }} // Makes the overlay catch pointer events
-                ></div>
-                <div 
-                    className="absolute bottom-0 right-0 w-1/3 h-1/5 bg-transparent"
-                    style={{ pointerEvents: 'auto' }} 
-                ></div>
+            <div className="sticky top-0 z-50 bg-gray-900">
+                <div className="relative h-auto w-full overflow-hidden">
+                    <ReactPlayer 
+                                url={video} 
+                                controls
+                                onEnded={handleVideoEnd}
+                                className="mb-4"
+                                width="100%"
+                            />
+                    <div 
+                    className="absolute top-0 left-0 w-full h-1/4 bg-transparent" 
+                    style={{ pointerEvents: 'auto' }} // Makes the overlay catch pointer events
+                    ></div>
+                    <div 
+                        className="absolute bottom-0 right-0 w-1/3 h-1/5 bg-transparent"
+                        style={{ pointerEvents: 'auto' }} 
+                    ></div>
 
+                </div>
             </div>
 
             <div className="container mx-auto p-4">
@@ -81,7 +93,7 @@ const CourseOverview = () => {
                     <div className="md:w-1/3 md:pl-8">
                         <div className="bg-gray-800 p-4 rounded-lg mb-4">
                             <h2 className="text-2xl font-semibold mb-2">Instructor</h2>
-                            <p>{course.author}- {course.preview_url}</p>
+                            <p>{course.author}</p>
                         </div>
                         
                     </div>
@@ -101,16 +113,16 @@ const CourseOverview = () => {
                                         >
                                             {lecture.title}
                                             {activeLecture === lecture.id ? (
-                                                <FaCaretDown className="ml-2" />
+                                                <FaCaretUp className="ml-2" />
                                             ) : (
-                                                <FaCaretRight className="ml-2" />
+                                                <FaCaretDown className="ml-2" />
                                             )}
                                         </button>
                                         {activeLecture === lecture.id && (
                                             <div className="bg-gray-600 p-4 rounded-b-lg">
                                                 {lecture.lessons.map(lesson => (
-                                                    <div key={lesson.id} className="p-2 rounded-lg">
-                                                        <p className="text-sm">{lesson.title}</p>
+                                                    <div key={lesson.id} className="p-2 bg-gray-800 mb-2 rounded-lg">
+                                                        <p className="text-sm text-white">{lesson.title}</p>
                                                     </div>
                                                 ))}
                                             </div>

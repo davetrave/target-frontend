@@ -49,7 +49,6 @@ const CartItem = ({ item, onRemove }) => {
       </div>
       <div className="w-2/3 pl-4">
       <h3 className="text-xl font-bold mb-2 text-white">{item.course.title}</h3>
-        <h2 className="text-white font-bold mb-2">{`Category: ${item.course.category}`}</h2>
         <div className="flex items-center mb-2">
           {[...Array(5)].map((_, i) => (
             <FaStar

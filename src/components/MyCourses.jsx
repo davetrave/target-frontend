@@ -13,7 +13,7 @@ const MyCourses = () => {
   const handleCardClick = (course) => {
 
     if (course.verified) {
-      showMessage('Enjoy your course!', 'error')
+      showMessage('Enjoy your course!', 'success')
       navigate(`/course/${course.course.id}`);
     }
     else {
@@ -58,11 +58,10 @@ const MyCourses = () => {
                   alt={item.course.title}
                   className="w-32 h-auto object-cover rounded-lg mr-4"
                 />
-                <span className="flex-grow">{item.course.title}</span>
+              
               </div>
               <div className="w-2/3 pl-4">
                 <h3 className="text-xl font-bold mb-2 text-white">{item.course.title}</h3>
-                <h2 className="text-white font-bold mb-2">{`Category: ${item.course.category}`}</h2>
                 {item.verified ? (
                   <h4 className="text-green-500">Verified Purchase</h4>
                 ) : (

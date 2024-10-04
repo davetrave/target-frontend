@@ -58,8 +58,7 @@ const CourseCard = ({ course }) => {
         />
       </div>
       <div className="w-2/3 pl-4">
-        <h3 className="text-xl font-bold mb-2 text-white">{course.title}</h3>
-        <h2 className="text-white font-bold mb-2">{`Category: ${course.category}`}</h2>
+        <h2 className="text-xl font-bold mb-2 text-white">{course.title}</h2>
         <div className="flex items-center mb-2">
           {[...Array(5)].map((_, i) => (
             <FaStar
@@ -68,7 +67,7 @@ const CourseCard = ({ course }) => {
             />
           ))}
         </div>
-        <div>
+        <div className='text-white'>
           <span className='font-bold text-lg'>{course.price}</span><sup>ETB</sup>
         </div>
         <div className="flex items-center justify-between">
