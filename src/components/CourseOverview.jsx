@@ -120,7 +120,7 @@ const CourseOverview = () => {
                                         </button>
                                         {activeLecture === lecture.id && (
                                             <div className="bg-gray-600 p-4 rounded-b-lg">
-                                                {lecture.lessons.map(lesson => (
+                                                {lecture.lessons.map(lesson => ( 
                                                     <div key={lesson.id} className="p-2 bg-gray-800 mb-2 rounded-lg">
                                                         <p className="text-sm text-white">{lesson.title}</p>
                                                     </div>
