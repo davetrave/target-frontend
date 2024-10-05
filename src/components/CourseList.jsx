@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import CourseCard from './CourseCard';
 import { CartContext } from '../context/CartContext';
 import { addToCart, getCart } from '../services/CartService';
+import BottomNavBar from './BottomNavBar';
 
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
@@ -57,6 +58,7 @@ const CourseList = () => {
   };
 
   return (
+    <>
     <div className="relative min-h-screen">
       {/* Gradient background fills the entire screen */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} z-0`}></div>
@@ -103,6 +105,8 @@ const CourseList = () => {
         </div>
       </div>
     </div>
+    
+    </>
   );
 };
 

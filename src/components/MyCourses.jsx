@@ -3,6 +3,7 @@ import { CartContext } from '../context/CartContext';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
 import { useFlashMessage } from '../context/FlashMessageContext';
+import BottomNavBar from './BottomNavBar';
 
 const MyCourses = () => {
   const showMessage = useFlashMessage(); // Get the showMessage function
@@ -41,6 +42,7 @@ const MyCourses = () => {
   }, [purchasedCourses]);
 
   return (
+    <>
     <div className="relative min-h-screen bg-gray-900 text-white overflow-hidden mb-10 pb-20">
       <h2 className="text-3xl text-white text-center my-4">My Courses</h2>
       {purchasedCourses.length > 0 ? (
@@ -75,6 +77,8 @@ const MyCourses = () => {
         <p className="text-white text-center">You haven't purchased any courses yet.</p>
       )}
     </div>
+    
+    </>
   );
 };
 

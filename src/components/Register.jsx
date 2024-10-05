@@ -107,8 +107,8 @@ const Register = () => {
         username,
         password,
         email,
-        firstName,
-        lastName
+        'first_name': firstName,
+        'last_name': lastName
       });
 
       if (response.status === 200 || response.status === 201) {
@@ -125,11 +125,11 @@ const Register = () => {
   };
 
   return (
-    <div className="form-container flex justify-center items-center h-screen bg-gray-900">
+    <div className="form-container ">
       <div className="starry-bg"></div>
-      <div className="card p-6 bg-gray-800 rounded-lg shadow-lg">
+      <div className="card ">
         <h1 className="text-3xl text-white font-bold mb-6">Register</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="">
 
           {/* Username */}
           <div className="input-container">

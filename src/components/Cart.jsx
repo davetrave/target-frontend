@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { CartContext } from '../context/CartContext';
 import CartItem from './CartItem';
 import { gsap } from 'gsap';
+import BottomNavBar from './BottomNavBar';
 
 const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -25,6 +26,7 @@ const Cart = () => {
   }, [cart]);
 
   return (
+    <>
     <div className="relative min-h-screen bg-gray-900 text-white overflow-hidden mb-10 pb-20">
       <h2 className="text-3xl text-white text-center my-4">My Cart</h2>
       {cart.length > 0 ? (
@@ -39,6 +41,8 @@ const Cart = () => {
         <p className="text-white text-center">Your cart is empty</p>
       )}
     </div>
+    
+    </>
   );
 };
 

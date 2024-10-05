@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCourseById } from '../services/CourseService';
 import LoadingAnimation from './LoadingAnimation'
+import BottomNavBar from './BottomNavBar';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaPlay, FaCaretDown, FaCaretUp } from 'react-icons/fa';
@@ -98,6 +99,7 @@ const CourseDetail = () => {
   }
 
   return (
+    <>
     <div className="min-h-screen bg-gray-900 text-white mb-10 pb-20">
       {/* Sticky Header Video */}
       <div className="sticky top-0 z-50 bg-gray-900">
@@ -162,6 +164,8 @@ const CourseDetail = () => {
         ))}
       </Accordion>
     </div>
+    
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { getCourseById, getCourseComments, postCourseComment } from '../services
 import RatingPopup from './RatingPopup';
 import LoadingAnimation from './LoadingAnimation'
 import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
+import BottomNavBar from './BottomNavBar';
 
 const CourseOverview = () => {
     const { id } = useParams();
@@ -64,6 +65,7 @@ const CourseOverview = () => {
     }
 
     return (
+        <>
         <div className="min-h-screen bg-gray-900 text-white mb-10 pb-20">
             {/* Header Image */}
             <div className="sticky top-0 z-50 bg-gray-900">
@@ -169,6 +171,8 @@ const CourseOverview = () => {
                 handleSubmit={handleRatingSubmit}
             />
         </div>
+        
+        </>
     );
 };
 
