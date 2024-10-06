@@ -43,9 +43,12 @@ const App = () => {
 
 const SettingsPage = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Settings</h1>
-      <p>Manage your account settings here.</p>
+    <div className="p-4 text-white">
+      <div className="starry-bg"></div>
+      <div className='alphacard'>
+        <h1 className="text-2xl font-bold mb-4">Settings</h1>
+        <p>Coming Soon for Awesome Features.</p>
+      </div>
     </div>
   );
 };
