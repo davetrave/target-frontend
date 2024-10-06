@@ -12,6 +12,7 @@ const CourseList = () => {
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [gradient, setGradient] = useState('from-purple-600 via-pink-500 to-purple-700');
   const { setCartCount, updatePurchasedCourses } = useContext(CartContext);
 
@@ -22,6 +23,7 @@ const CourseList = () => {
         setCourses(coursesData);
         setFilteredCourses(coursesData);
         setCart(cartData);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching courses or cart:', error.response);
         setFetchError('Failed to fetch courses or cart. Please try again later.');
@@ -95,7 +97,8 @@ const CourseList = () => {
 
         {/* Course Cards */}
         
-        {filteredCourses.map((course) => (
+        { loading ? (<LoadingAnimation/>) : 
+        (filteredCourses.map((course) => (
           <div className='m-2'>
             <CourseCard
               key={course.id}
@@ -104,7 +107,7 @@ const CourseList = () => {
               isAddedToCart={cart.includes(course.id)}
             />
           </div>
-        ))}
+        )))}
         
       </div>
     </div>

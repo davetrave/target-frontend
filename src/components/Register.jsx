@@ -8,6 +8,7 @@ const Register = () => {
   const showMessage = useFlashMessage();
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false)
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -97,11 +98,12 @@ const Register = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!validateForm()) {
       showMessage('Please correct the errors in the form.', 'error');
       return;
     }
-
+    setLoading(true);
     try {
       const response = await api.post(route, {
         username,
@@ -121,6 +123,8 @@ const Register = () => {
       if (error.response?.data?.detail) showMessage(`Error: ${error.response.data.detail}`, 'error');
       else if (error.response?.data?.username) showMessage(`Error: ${error.response.data.username[0]}`, 'error');
       else showMessage('An error occurred', 'error');
+    } finally {
+      setLoading(false); // Stop spinner once the request completes
     }
   };
 
@@ -223,11 +227,37 @@ const Register = () => {
 
           {/* Submit */}
           <div className="submit-container">
-            <input
-              type="submit"
-              value="Register"
-              className="neon-button w-full py-2 px-4 mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg cursor-pointer"
-            />
+            <button
+                type="submit"
+                className="neon-button flex justify-center items-center"
+                disabled={loading} // Disable button while loading
+            >
+                {loading ? (
+                    // Spinner inside the button when loading is true
+                    <svg
+                        className="animate-spin h-5 w-5 mr-3 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                        ></circle>
+                        <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                    </svg>
+                ) : (
+                    "Register"
+                )}
+            </button>
           </div>
         </form>
       </div>
