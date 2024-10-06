@@ -29,21 +29,21 @@ const CourseCard = ({ course }) => {
     }
   };
 
-  useEffect(() => {
-    gsap.fromTo(
-      '.course-card',
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'power3.out',
-        stagger: {
-          amount: 0.3,
-        },
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   gsap.fromTo(
+  //     '.course-card',
+  //     { opacity: 0, y: 20 },
+  //     {
+  //       opacity: 1,
+  //       y: 0,
+  //       duration: 0.6,
+  //       ease: 'power3.out',
+  //       stagger: {
+  //         amount: 0.3,
+  //       },
+  //     }
+  //   );
+  // }, []);
 
   return (
     <div
@@ -59,6 +59,7 @@ const CourseCard = ({ course }) => {
       </div>
       <div className="w-2/3 pl-4">
         <h2 className="text-xl font-bold mb-2 text-white">{course.title}</h2>
+        <h6 className="text-sm font-bold mb-2 text-white"> for {course.category}</h6>
         <div className="flex items-center mb-2">
           {[...Array(5)].map((_, i) => (
             <FaStar

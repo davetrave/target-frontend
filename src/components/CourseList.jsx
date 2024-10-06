@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import CourseCard from './CourseCard';
 import { CartContext } from '../context/CartContext';
 import { addToCart, getCart } from '../services/CartService';
+import LoadingAnimation from './LoadingAnimation'
 import BottomNavBar from './BottomNavBar';
 
 const CourseList = () => {
@@ -57,19 +58,19 @@ const CourseList = () => {
     }
   };
 
+  if (!courses) {
+    return <LoadingAnimation />
+  }
+
   return (
     <>
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-gray-900 text-white overflow-hidden mb-10 pb-20">
       {/* Gradient background fills the entire screen */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} z-0`}></div>
-
+      
       {/* Course content */}
-      <div className="relative z-10 p-6">
-        {fetchError && (
-          <div className="bg-red-200 text-red-800 p-3 mb-4 rounded">{fetchError}</div>
-        )}
-        <h2 className="text-3xl font-bold text-white mb-4">Courses</h2>
-
+      <div className="relative z-10 grid grid-cols-1">
+      <h2 className="text-3xl font-bold text-white mb-4">Courses</h2>
         {/* Category Selection */}
         {/* <div className="mb-6">
           <button
@@ -93,16 +94,18 @@ const CourseList = () => {
         </div> */}
 
         {/* Course Cards */}
-        <div className="">
-          {filteredCourses.map((course) => (
+        
+        {filteredCourses.map((course) => (
+          <div className='m-2'>
             <CourseCard
               key={course.id}
               course={course}
               handleAddToCart={handleAddToCart}
               isAddedToCart={cart.includes(course.id)}
             />
-          ))}
-        </div>
+          </div>
+        ))}
+        
       </div>
     </div>
     

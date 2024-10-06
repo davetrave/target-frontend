@@ -297,8 +297,8 @@ nav .nav-link:hover .nav-link-icon {
 }
 
 .course-card {
-  width: 80%;
-  max-width: 300px;
+  /* width: 80%;
+  max-width: 300px; */
   transition: transform 0.3s ease;
   transform-origin: center;
 }
