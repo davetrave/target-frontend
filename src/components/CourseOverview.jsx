@@ -94,21 +94,23 @@ const CourseOverview = () => {
 
                 </div>
             </div>
-
             <div className="container mx-auto p-4">
                 <div className="flex flex-col md:flex-row">
                     {/* Right Column: Instructor Info and Related Courses */}
+                    <h2 className="text-xl font-bold mb-4">{course.title} </h2>
+                    <p className="text-lg mb-4">{course.description}</p>
                     <div className="md:w-1/3 md:pl-8">
                         <div className="bg-gray-800 p-4 rounded-lg mb-4">
+                            
                             <h2 className="text-2xl font-semibold mb-2">Instructor</h2>
-                            <p>{course.author}</p>
+                            <p>{course.author.first_name} {course.author.last_name}</p>
                         </div>
                         
                     </div>
                     {/* Left Column: Course Content */}
                     <div className="md:w-2/3">
-                        <h2 className="text-2xl font-bold mb-4">Course Description</h2>
-                        <p className="text-lg mb-4">{course.description}</p>
+                        {/* <h2 className="text-2xl font-bold mb-4">Course Description</h2> */}
+                        
                         
                         <div className="bg-gray-800 p-4 rounded-lg mb-4">
                             <h2 className="text-2xl font-semibold mb-2">Course Content</h2>

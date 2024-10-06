@@ -129,7 +129,8 @@ const CourseDetail = () => {
         </div>
       </div>
 
-      <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
+      <h2 className="text-3xl font-bold m-1">{course.title}</h2>
+      <h2 className='text-xl m-4' >Curated By <span className='font-bold text-sm'> {course.author.first_name} {course.author.last_name} </span> </h2>
 
       {/* Accordion */}
       <Accordion allowZeroExpanded>
