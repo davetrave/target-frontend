@@ -69,14 +69,20 @@ const CourseOverview = () => {
         <div className="min-h-screen bg-gray-900 text-white mb-10 pb-20">
             {/* Header Image */}
             <div className="sticky top-0 z-50 bg-gray-900">
-                <div className="relative h-auto w-full overflow-hidden">
+                <div className="video-wrapper">
                     <ReactPlayer 
-                                url={video} 
-                                controls
-                                onEnded={handleVideoEnd}
-                                className="mb-4"
-                                width="100%"
-                            />
+                        url={video} 
+                        controls 
+                        width="100%" 
+                        height="100%"
+                        className="react-player"
+                        onEnded={handleVideoEnd} 
+                        config={{
+                        youtube: {
+                            playerVars: { rel: 0, controls: 1 }, // No related videos
+                        },
+                        }}
+                    />
                     <div 
                     className="absolute top-0 left-0 w-full h-1/4 bg-transparent" 
                     style={{ pointerEvents: 'auto' }} // Makes the overlay catch pointer events

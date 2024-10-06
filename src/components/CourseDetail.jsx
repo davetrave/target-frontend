@@ -103,16 +103,17 @@ const CourseDetail = () => {
     <div className="min-h-screen bg-gray-900 text-white mb-10 pb-20">
       {/* Sticky Header Video */}
       <div className="sticky top-0 z-50 bg-gray-900">
-        <div className="relative h-auto w-full overflow-hidden">
+        <div className="video-wrapper">
           <ReactPlayer 
             url={currentVideo} 
             controls 
-            className="mb-4"
-            width="100%"
-            onEnded={handleVideoEnd} // Handle video end to move to the next
+            width="100%" 
+            height="100%"
+            className="react-player"
+            onEnded={handleVideoEnd} 
             config={{
               youtube: {
-                playerVars: { rel: 0, controls: 1 }, // Prevent related videos from showing
+                playerVars: { rel: 0, controls: 1 }, // No related videos
               },
             }}
           />

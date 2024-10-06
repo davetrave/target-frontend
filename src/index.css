@@ -359,6 +359,29 @@ nav .nav-link:hover .nav-link-icon {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   border: 2px solid #3b82f6; /* Blue border for the active tab */
 }
+/* Container to maintain 16:9 aspect ratio */
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media (max-width: 640px) {
+  .video-wrapper {
+    padding-top: 56.25%; /* Keep the aspect ratio intact */
+  }
+}
+
 
 
 
