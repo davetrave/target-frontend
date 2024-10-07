@@ -118,7 +118,7 @@ const CourseDetail = () => {
             }}
           />
           <div 
-            className="absolute top-0 left-0 w-full h-1/4 bg-transparent" 
+            className="absolute top-0 left-0 w-full h-1/3 bg-transparent" 
             style={{ pointerEvents: 'auto' }} >
             
           </div>
