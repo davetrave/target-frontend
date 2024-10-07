@@ -118,12 +118,12 @@ const CourseDetail = () => {
             }}
           />
           <div 
-            className="absolute top-0 left-0 w-full h-1/3 bg-transparent" 
+            className="absolute top-0 left-0 w-full h-1/4 bg-transparent" 
             style={{ pointerEvents: 'auto' }} >
             
           </div>
           <div 
-            className="absolute bottom-0 right-0 w-1/3 h-1/5 bg-transparent"
+            className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-transparent"
             style={{ pointerEvents: 'auto' }} >
           </div>
         </div>
