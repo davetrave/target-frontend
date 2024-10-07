@@ -374,7 +374,8 @@ nav .nav-link:hover .nav-link-icon {
 /* Container to maintain 16:9 aspect ratio */
 .video-wrapper {
   position: relative;
-  padding-top: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+  padding-top: 56%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+  padding-bottom: 22%;
   height: 0;
   overflow: hidden;
 }

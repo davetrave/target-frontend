@@ -113,7 +113,7 @@ const CourseDetail = () => {
             onEnded={handleVideoEnd} 
             config={{
               youtube: {
-                playerVars: { rel: 0, controls: 1 }, // No related videos
+                playerVars: { rel: 0, controls: 1, modestbranding: 1 }, // No related videos
               },
             }}
           />
