@@ -113,7 +113,7 @@ const CourseDetail = () => {
             onEnded={handleVideoEnd} 
             config={{
               youtube: {
-                playerVars: { rel: 0, controls: 1, modestbranding: 1 }, // No related videos
+                playerVars: { rel: 0, controls: 1 }, // No related videos
               },
             }}
           />
@@ -123,7 +123,7 @@ const CourseDetail = () => {
             
           </div>
           <div 
-            className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-transparent"
+            className="absolute bottom-0 right-0 w-2/3 h-1/3 bg-transparent"
             style={{ pointerEvents: 'auto' }} >
           </div>
         </div>
