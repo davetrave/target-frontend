@@ -388,6 +388,10 @@ nav .nav-link:hover .nav-link-icon {
   height: 100%;
 }
 
+.overlay {
+  height: 10%;
+}
+
 
 @media (max-width: 640px) {
   .video-wrapper {

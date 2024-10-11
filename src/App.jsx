@@ -12,6 +12,7 @@ import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Register from "./components/Register";
 import Protected from "./components/ProtectedRoute";
+import Settings from "./components/Settings"
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
             <Route path="/courses" exact element={<Protected><CourseList /></Protected>} />
             <Route path="/My Cart" exact element={<Protected><Cart /></Protected>} />
             <Route path="/My" exact element={<Protected><MyCourses /></Protected>} />
-            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/settings" element={<Protected><Settings /></Protected>} />
             <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
             <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
             <Route path="/login" exact element={<Login />} />
@@ -41,16 +42,6 @@ const App = () => {
   );
 };
 
-const SettingsPage = () => {
-  return (
-    <div className="p-4 text-white">
-      <div className="starry-bg"></div>
-      <div className='alphacard'>
-        <h1 className="text-2xl font-bold mb-4">Settings</h1>
-        <p>Coming Soon for Awesome Features.</p>
-      </div>
-    </div>
-  );
-};
+
 
 export default App;

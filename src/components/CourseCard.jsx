@@ -29,22 +29,6 @@ const CourseCard = ({ course }) => {
     }
   };
 
-  // useEffect(() => {
-  //   gsap.fromTo(
-  //     '.course-card',
-  //     { opacity: 0, y: 20 },
-  //     {
-  //       opacity: 1,
-  //       y: 0,
-  //       duration: 0.6,
-  //       ease: 'power3.out',
-  //       stagger: {
-  //         amount: 0.3,
-  //       },
-  //     }
-  //   );
-  // }, []);
-
   return (
     <div
       onClick={handleCardClick}
@@ -84,6 +68,5 @@ const CourseCard = ({ course }) => {
     </div>
   );
 };
-
 
 export default CourseCard;

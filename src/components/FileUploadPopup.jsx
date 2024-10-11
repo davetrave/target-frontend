@@ -41,8 +41,9 @@ const FileUploadPopup = ({ price, open, handleClose, handleSubmit }) => {
       >
         <Typography variant="h6" component="h2" gutterBottom>
             Thank You For Deciding On Purchasing Our Course.<br/>
-            Please send {price} Birr To One Of The Folloing Numbers Via Telebirr<br/>
-            <em>- 0910032575</em><br/>
+            Please send {price} Birr To One Of The Following Accounts<br/>
+            <em>- CBE 1000180353047 - Dawit Niguse</em><br/>
+            <em>- Telebirr 0902184880 - Dawit Niguse</em><br/>
             And Then, Upload A Screenshot Of Your Receipt.<br/>
             (Only a Screenshot)<br/>
 
