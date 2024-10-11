@@ -62,7 +62,7 @@ const CartItem = ({ item, onRemove }) => {
         <div className="flex justify-between items-center mt-auto">
           
           <button
-            className={`bg-${isCheckoutPending ? 'gray' : 'green'}-500 text-white px-4 py-2 rounded-lg flex items-center`}
+            className={`bg-${isCheckoutPending ? 'gray' : 'green'}-500 text-white text-sm p-1 rounded-lg flex items-center`}
             onClick={handleCheckoutClick}
             disabled={isCheckoutPending}
           >
@@ -71,10 +71,10 @@ const CartItem = ({ item, onRemove }) => {
           </button>
           <button
             onClick={() => onRemove(item.id)}
-            className="flex items-center text-red-500 hover:text-red-700"
+            className="flex items-center  text-red-500 hover:text-red-700"
           >
             <FaTrash className="mr-1" />
-            <span>Remove</span>
+            <span className='text-sm'>Remove</span>
           </button>
         </div>
       </div>
