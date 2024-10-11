@@ -87,6 +87,12 @@ const CourseOverview = () => {
                     className="absolute top-0 left-0 w-full h-1/4 bg-transparent" 
                     style={{ pointerEvents: 'auto' }} // Makes the overlay catch pointer events
                     ></div>
+
+                    <div 
+                        className="absolute top-0 left-0 w-1/2 h-2/3 bg-transparent" 
+                        style={{ pointerEvents: 'auto' }} >
+                        
+                    </div>
                     
                     <div 
                         className="overlay absolute bottom-0 right-0 w-1/2 bg-black"

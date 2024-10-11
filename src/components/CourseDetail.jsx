@@ -122,6 +122,11 @@ const CourseDetail = () => {
             style={{ pointerEvents: 'auto' }} >
             
           </div>
+          {/* <div 
+            className="absolute bottom-0 right-0 w-1/2 h-2/3 bg-transparent" 
+            style={{ pointerEvents: 'auto' }} >
+            
+          </div> */}
           
           <div 
             className="overlay absolute bottom-0 right-0 w-1/2 bg-black"

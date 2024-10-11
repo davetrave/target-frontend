@@ -47,9 +47,12 @@ const FileUploadPopup = ({ price, open, handleClose, handleSubmit }) => {
         <Typography variant="h6" component="h6" gutterBottom sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
             Thank You For Deciding On Purchasing Our Course.<br/>
             Please send {price} Birr To One Of The Following Accounts<br/><hr/>
-            <em>- CBE 1000180353047 - Dawit Nigussie</em><br/><hr/>
-            <em>- Telebirr 0902184880 - Dawit Niguse</em><br/><hr/>
+            <ul>
+              <li><em>- CBE 1000180353047 - Dawit Niguse</em><br/><hr/></li>
+              <li><em>- Telebirr 0902184880 - Dawit Niguse</em><br/><hr/></li>
+            </ul>
             And Then, Upload Proof Of Your Receipt.<br/>
+            (Photo or Screenshot)
             
 
         </Typography>

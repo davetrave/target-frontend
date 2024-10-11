@@ -53,7 +53,7 @@ const CourseCard = ({ course }) => {
           ))}
         </div>
         <div className='text-white'>
-          <span className='font-bold text-lg'>{course.price}</span><sup>ETB</sup>
+          <span className='font-bold text-lg'>{Math.trunc(course.price)}</span><sup>ETB</sup>
         </div>
         <div className="flex items-center justify-between">
           <button
