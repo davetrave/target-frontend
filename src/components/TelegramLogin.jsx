@@ -15,6 +15,41 @@ const TelegramLogin = () => {
         telegram_login();
     }, []);
 
+    useEffect(() => {
+        const auth = async () => {
+
+        
+            if (tgData == null){
+                showMessage("Unable To Access Telegram Account!", 'error');
+            } else {
+
+                try {
+                    const response = await api.post(route, {
+                        username: tgData.id,
+                        password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
+                    });
+    
+                    if (response.status === 200 || response.status === 201) {
+                        localStorage.setItem('access', response.data.access);
+                        localStorage.setItem('refresh', response.data.refresh);
+                        showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
+                        navigate("/");
+                    } else {
+                        showMessage(`Unexpected response: ${response.status}`, 'error');
+                        console.log(response);
+                    } 
+
+                } catch (error){
+                    showMessage(`Error: ${error}`, 'error');
+                    console.log(error);
+
+                }
+                
+            }
+        }
+        auth();
+    }, [tgData]);
+
     const telegram_login = async () => {
         setLoading(true);
         try {
@@ -41,26 +76,7 @@ const TelegramLogin = () => {
                 showMessage("Telegram WebApp API not found", 'error');
                 console.error();
             }
-            if (tgData == null){
-                showMessage("Unable To Access Telegram Account!", 'error');
-            } else {
-
             
-                const response = await api.post(route, {
-                    username: tgData.id,
-                    password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
-                });
-
-                if (response.status === 200 || response.status === 201) {
-                    localStorage.setItem('access', response.data.access);
-                    localStorage.setItem('refresh', response.data.refresh);
-                    showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
-                    navigate("/");
-                } else {
-                    showMessage(`Unexpected response: ${response.status}`, 'error');
-                    console.log(response);
-                }
-            }
         } catch (error) {
             showMessage(`Error: ${error}`, 'error');
             
