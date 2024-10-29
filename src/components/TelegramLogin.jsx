@@ -18,6 +18,8 @@ const TelegramLogin = () => {
     const telegram_login = async () => {
         setLoading(true);
         try {
+            console.log(window.Telegram.WebApp.initData);
+            console.log(window.Telegram.WebApp.initDataUnsafe);
             // Check if the Telegram WebApp API is available
             if (window.Telegram && window.Telegram.WebApp) {
                 const user = window.Telegram.WebApp.initDataUnsafe?.user;
@@ -36,19 +38,25 @@ const TelegramLogin = () => {
                 showMessage("Telegram WebApp API not found", 'error');
                 console.error();
             }
-            const response = await api.post(route, {
-                username: tgData.id,
-                password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
-            });
-
-            if (response.status === 200 || response.status === 201) {
-                localStorage.setItem('access', response.data.access);
-                localStorage.setItem('refresh', response.data.refresh);
-                showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
-                navigate("/");
+            if (tgData == null){
+                showMessage("Unable To Access Telegram Account!", 'error');
             } else {
-                showMessage(`Unexpected response: ${response.status}`, 'error');
-                console.log(response);
+
+            
+                const response = await api.post(route, {
+                    username: tgData.id,
+                    password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
+                });
+
+                if (response.status === 200 || response.status === 201) {
+                    localStorage.setItem('access', response.data.access);
+                    localStorage.setItem('refresh', response.data.refresh);
+                    showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
+                    navigate("/");
+                } else {
+                    showMessage(`Unexpected response: ${response.status}`, 'error');
+                    console.log(response);
+                }
             }
         } catch (error) {
             showMessage(`Error: ${error}`, 'error');
