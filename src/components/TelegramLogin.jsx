@@ -6,7 +6,7 @@ import { retrieveLaunchParams } from '@telegram-apps/sdk';
 
 const TelegramLogin = () => {
     const showMessage = useFlashMessage();
-    const [params, setParams] = useState(null);
+    const [tgData, setTgData] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const route = "api/user/token/";
@@ -18,18 +18,18 @@ const TelegramLogin = () => {
     const telegram_login = async () => {
         setLoading(true);
         try {
-            const tg_params = await retrieveLaunchParams();
-            if (tg_params) setParams(tg_params);
+            const {init_data} = retrieveLaunchParams();
+            if (init_data) setTgData(init_data.user);
 
             const response = await api.post(route, {
-                username: tg_params.user_id,
+                username: tgData.id,
                 password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
             });
 
             if (response.status === 200 || response.status === 201) {
                 localStorage.setItem('access', response.data.access);
                 localStorage.setItem('refresh', response.data.refresh);
-                showMessage(`Welcome, ${tg_params.first_name}! Happy learning`, 'success');
+                showMessage(`Welcome, ${tgData.first_name}! Happy learning`, 'success');
                 navigate("/");
             } else {
                 showMessage(`Unexpected response: ${response.status}`, 'error');
@@ -37,7 +37,7 @@ const TelegramLogin = () => {
             }
         } catch (error) {
             showMessage(`Error: ${error}`, 'error');
-            showMessage(`Error: ${tg_params}`, 'error');
+            showMessage(`Error: ${tgData}`, 'error');
         } finally {
             setLoading(false);
         }
