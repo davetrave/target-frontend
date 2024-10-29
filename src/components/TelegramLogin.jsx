@@ -18,10 +18,13 @@ const TelegramLogin = () => {
     const telegram_login = async () => {
         setLoading(true);
         try {
-            console.log(window.Telegram.WebApp.initData);
-            console.log(window.Telegram.WebApp.initDataUnsafe);
+            
             // Check if the Telegram WebApp API is available
             if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.ready();
+                console.log(window.Telegram.WebApp);
+                console.log(window.Telegram.WebApp.initData);
+                console.log(window.Telegram.WebApp.initDataUnsafe);
                 const user = window.Telegram.WebApp.initDataUnsafe?.user;
                 if (user) {
                     setTgData({
