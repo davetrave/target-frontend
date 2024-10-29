@@ -18,9 +18,24 @@ const TelegramLogin = () => {
     const telegram_login = async () => {
         setLoading(true);
         try {
-            const {init_data} = retrieveLaunchParams();
-            if (init_data) setTgData(init_data.user);
-
+            // Check if the Telegram WebApp API is available
+            if (window.Telegram && window.Telegram.WebApp) {
+                const user = window.Telegram.WebApp.initDataUnsafe?.user;
+                if (user) {
+                    setTgData({
+                        id: user.id,
+                        username: user.username,
+                        firstName: user.first_name,
+                        lastName: user.last_name,
+                        photoUrl: user.photo_url,
+                    });
+                } else {
+                    showMessage('Error fetching user data!', 'error');
+                }
+            } else {
+                showMessage("Telegram WebApp API not found", 'error');
+                console.error();
+            }
             const response = await api.post(route, {
                 username: tgData.id,
                 password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
@@ -29,7 +44,7 @@ const TelegramLogin = () => {
             if (response.status === 200 || response.status === 201) {
                 localStorage.setItem('access', response.data.access);
                 localStorage.setItem('refresh', response.data.refresh);
-                showMessage(`Welcome, ${tgData.first_name}! Happy learning`, 'success');
+                showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
                 navigate("/");
             } else {
                 showMessage(`Unexpected response: ${response.status}`, 'error');
@@ -37,7 +52,7 @@ const TelegramLogin = () => {
             }
         } catch (error) {
             showMessage(`Error: ${error}`, 'error');
-            showMessage(`Error: ${tgData}`, 'error');
+            
         } finally {
             setLoading(false);
         }
