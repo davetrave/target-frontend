@@ -1,0 +1,92 @@
+import React, { useState, useEffect } from "react";
+import api from '../services/AuthService';
+import { useNavigate } from "react-router-dom";
+import { useFlashMessage } from "../context/FlashMessageContext";
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
+
+const TelegramLogin = () => {
+    const showMessage = useFlashMessage();
+    const [params, setParams] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const route = "api/user/token/";
+
+    useEffect(() => {
+        telegram_login();
+    }, []);
+
+    const telegram_login = async () => {
+        setLoading(true);
+        try {
+            const tg_params = await retrieveLaunchParams();
+            if (tg_params) setParams(tg_params);
+
+            const response = await api.post(route, {
+                username: tg_params.user_id,
+                password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
+            });
+
+            if (response.status === 200 || response.status === 201) {
+                localStorage.setItem('access', response.data.access);
+                localStorage.setItem('refresh', response.data.refresh);
+                showMessage(`Welcome, ${tg_params.first_name}! Happy learning`, 'success');
+                navigate("/");
+            } else {
+                showMessage(`Unexpected response: ${response.status}`, 'error');
+                console.log(response);
+            }
+        } catch (error) {
+            showMessage(`Error: ${error}`, 'error');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="relative w-full h-screen overflow-hidden bg-black">
+            {/* Twinkling Starry Background */}
+            {[...Array(150)].map((_, i) => (
+                <div
+                    key={i}
+                    className="absolute bg-white rounded-full"
+                    style={{
+                        width: `${Math.random() * 2}px`,
+                        height: `${Math.random() * 2}px`,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animation: `twinkle ${Math.random() * 2 + 2}s infinite ease-in-out`,
+                    }}
+                ></div>
+            ))}
+
+            {/* Pretty Loading Spinner in the Center */}
+            
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center space-x-3">
+                <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"></div>
+                <div className="w-4 h-4 bg-green-500 rounded-full animate-bounce delay-200"></div>
+                <div className="w-4 h-4 bg-red-500 rounded-full animate-bounce delay-400"></div>
+            </div>
+            
+
+            <style>
+                {`
+                /* Twinkling Star Effect */
+                @keyframes twinkle {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.5; }
+                }
+
+                /* Bounce animation delays for spinner dots */
+                .delay-200 {
+                    animation-delay: 0.2s;
+                }
+                .delay-400 {
+                    animation-delay: 0.4s;
+                }
+                `}
+            </style>
+        </div>
+    );
+};
+
+export default TelegramLogin;

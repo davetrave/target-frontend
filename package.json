@@ -13,6 +13,7 @@
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.6",
+    "@telegram-apps/sdk": "^2.5.2",
     "axios": "^1.7.2",
     "canvas-confetti": "^1.9.3",
     "gsap": "^3.12.5",

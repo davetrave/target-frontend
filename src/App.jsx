@@ -10,6 +10,7 @@ import Cart from './components/Cart';
 import BottomNavBar from './components/BottomNavBar';
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
+import TelegramLogin from './components/TelegramLogin';
 import Register from "./components/Register";
 import Protected from "./components/ProtectedRoute";
 import Settings from "./components/Settings"
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
             <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
             <Route path="/login" exact element={<Login />} />
+            <Route path="/telegram/login" exact element={<TelegramLogin />} />
             <Route path="/register" exact element={<Register />} />
           </Routes>
           <BottomNavBar />
