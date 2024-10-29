@@ -6,17 +6,20 @@ import { CartContext } from '../context/CartContext';
 import { addToCart, getCart } from '../services/CartService';
 import LoadingAnimation from './LoadingAnimation'
 import BottomNavBar from './BottomNavBar';
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
 
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
-  const [fetchError, setFetchError] = useState(null);
+  const [params, setParams] = useState(null);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [gradient, setGradient] = useState('from-purple-600 via-pink-500 to-purple-700');
   const { setCartCount, updatePurchasedCourses } = useContext(CartContext);
 
   useEffect(() => {
+    const tg_params = retrieveLaunchParams();
+    setParams()
     const fetchCoursesAndCart = async () => {
       try {
         const [coursesData, cartData] = await Promise.all([getCourses(), getCart()]);
@@ -29,7 +32,7 @@ const CourseList = () => {
         setFetchError('Failed to fetch courses or cart. Please try again later.');
       }
     };
-
+    console.log(tg_params)
     fetchCoursesAndCart();
     updatePurchasedCourses();
   }, []);

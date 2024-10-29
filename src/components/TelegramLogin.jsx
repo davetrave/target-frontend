@@ -37,6 +37,7 @@ const TelegramLogin = () => {
             }
         } catch (error) {
             showMessage(`Error: ${error}`, 'error');
+            showMessage(`Error: ${tg_params}`, 'error');
         } finally {
             setLoading(false);
         }
