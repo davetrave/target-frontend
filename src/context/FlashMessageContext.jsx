@@ -12,7 +12,7 @@ const FlashMessageProvider = ({ children }) => {
     
     setTimeout(() => {
       setFlashMessage(null);
-    }, 30000); // The message will disappear after 3 seconds
+    }, 6000); // The message will disappear after 6 seconds
   };
 
   return (

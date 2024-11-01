@@ -9,7 +9,7 @@ const TelegramLogin = () => {
     const [tgData, setTgData] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const route = "api/user/token/";
+    const route = "api/token/";
 
     useEffect(() => {
         telegram_login();
@@ -17,48 +17,40 @@ const TelegramLogin = () => {
 
     useEffect(() => {
         const auth = async () => {
+            if (!tgData) return
+            try {
 
-        
-            if (tgData == null){
-                showMessage("Unable To Access Telegram Account!", 'error');
-            } else {
+                const response = await api.post(route, {
+                    username: tgData.id,
+                    password: import.meta.env.VITE_USER_PASSWORD
+                });
 
-                try {
-                    const response = await api.post(route, {
-                        username: tgData.id,
-                        password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
-                    });
-    
-                    if (response.status === 200 || response.status === 201) {
-                        localStorage.setItem('access', response.data.access);
-                        localStorage.setItem('refresh', response.data.refresh);
-                        showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
-                        navigate("/");
-                    } else {
-                        showMessage(`Unexpected response: ${response.status}`, 'error');
-                        console.log(response);
-                    } 
+                if (response.status === 200 || response.status === 201) {
+                    localStorage.setItem('access', response.data.access);
+                    localStorage.setItem('refresh', response.data.refresh);
+                    showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
+                    navigate("/");
+                } else {
+                    showMessage(`Unexpected response: ${response.status}`, 'error');
+                    console.log(response);
+                } 
 
-                } catch (error){
-                    showMessage(`Error: ${error}`, 'error');
-                    console.log(error);
+            } catch (error){
+                showMessage(`Error: ${error}`, 'error');
+                console.log(error);
 
-                }
-                
             }
         }
         auth();
+        console.log("TG DATA:> ", tgData)
     }, [tgData]);
 
     const telegram_login = async () => {
         setLoading(true);
         try {
-            
             // Check if the Telegram WebApp API is available
             if (window.Telegram && window.Telegram.WebApp) {
                 window.Telegram.WebApp.ready();
-                console.log(window.Telegram.WebApp);
-                console.log(window.Telegram.WebApp.initData);
                 console.log(window.Telegram.WebApp.initDataUnsafe);
                 const user = window.Telegram.WebApp.initDataUnsafe?.user;
                 if (user) {

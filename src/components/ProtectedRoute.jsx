@@ -14,7 +14,7 @@ const Protected = ({ children }) => {
   const refreshToken = async () => {
     const refreshToken = localStorage.getItem('refresh');
     try {
-      const response = await api.post('api/user/token/refresh/', { refresh: refreshToken });
+      const response = await api.post('api/token/refresh/', { refresh: refreshToken });
       if (response.status === 200) {
         localStorage.setItem('access', response.data.access);
         setIsAuth(true);

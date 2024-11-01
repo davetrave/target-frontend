@@ -1,12 +1,9 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const VITE_API_URL = 'https://davemwh.pythonanywhere.com/';
-//const VITE_API_URL = 'http://localhost:8000/';
-
 // Create an instance of axios
 const api = axios.create({
-  baseURL: VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL
 });
 
 // Intercept requests to add Authorization header
@@ -31,7 +28,7 @@ api.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refresh');
         if (refreshToken) {
-          const response = await api.post('api/user/token/refresh/', { refresh: refreshToken });
+          const response = await api.post('api/token/refresh/', { refresh: refreshToken });
           if (response.status === 200) {
             localStorage.setItem('access', response.data.access);
             error.config.headers.Authorization = `Bearer ${response.data.access}`;
