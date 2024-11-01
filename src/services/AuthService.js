@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const apiUrl = "https://davemwh.pythonanywhere.com/"
 // Create an instance of axios
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: import.meta.env.VITE_API_URL? import.meta.env.VITE_API_URL:apiUrl
 });
 
 // Intercept requests to add Authorization header

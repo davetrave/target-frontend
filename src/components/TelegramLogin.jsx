@@ -22,7 +22,7 @@ const TelegramLogin = () => {
 
                 const response = await api.post(route, {
                     username: tgData.id,
-                    password: import.meta.env.VITE_USER_PASSWORD
+                    password: "ttt7476134736:AAFE5qzkrUlfAJxeOKtlH7Pp6TfJ-6_gK4E"
                 });
 
                 if (response.status === 200 || response.status === 201) {
