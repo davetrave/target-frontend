@@ -98,14 +98,16 @@ const TelegramLogin = () => {
 
             {/* Pretty Loading Spinner in the Center */}
             
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center space-x-3">
-                <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"></div>
-                <div className="w-4 h-4 bg-green-500 rounded-full animate-bounce delay-200"></div>
-                <div className="w-4 h-4 bg-red-500 rounded-full animate-bounce delay-400"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+                <div className="flex items-center justify-center space-x-3">
+                    <div className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"></div>
+                    <div className="w-4 h-4 bg-green-500 rounded-full animate-bounce delay-200"></div>
+                    <div className="w-4 h-4 bg-red-500 rounded-full animate-bounce delay-400"></div>
+                </div>
+                <h4 className="text-white mt-6">Loading ...</h4>
+                
             </div>
-            <div className="absolute top-3/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center space-x-3">
-                <h2>Loading ...</h2>
-            </div>
+            
             
 
             <style>
