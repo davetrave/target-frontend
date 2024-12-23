@@ -103,6 +103,9 @@ const TelegramLogin = () => {
                 <div className="w-4 h-4 bg-green-500 rounded-full animate-bounce delay-200"></div>
                 <div className="w-4 h-4 bg-red-500 rounded-full animate-bounce delay-400"></div>
             </div>
+            <div className="absolute top-3/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center space-x-3">
+                <h2>Loading ...</h2>
+            </div>
             
 
             <style>

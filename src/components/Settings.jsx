@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react'
 const Settings = () => {
-  [username, setUsername] = useState("")
-  [firstName, setFirstName] = useState("Account")
+  const [username, setUsername] = useState("")
+  const [firstName, setFirstName] = useState("Account")
 
   useEffect(()=> {
     let username_local = localStorage.getItem('username')
