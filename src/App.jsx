@@ -27,7 +27,7 @@ const App = () => {
             <Route path="/courses" exact element={<Protected><CourseList /></Protected>} />
             <Route path="/My Cart" exact element={<Protected><Cart /></Protected>} />
             <Route path="/My" exact element={<Protected><MyCourses /></Protected>} />
-            <Route path="/settings" element={<Protected><Settings /></Protected>} />
+            <Route path="/Profile" element={<Protected><Settings /></Protected>} />
             <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
             <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
             <Route path="/login" exact element={<Login />} />
