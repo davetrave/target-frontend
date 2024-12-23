@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaBook, FaCog, FaShoppingCart, FaUniversity, FaCheckDouble, FaBookOpen } from 'react-icons/fa';
+import { FaHome, FaBook, FaCog, FaShoppingCart, FaUniversity, FaCheckDouble, FaBookOpen, FaUserGraduate } from 'react-icons/fa';
 import gsap from 'gsap';
 import { CartContext } from '../context/CartContext';
 import confetti from 'canvas-confetti'; // Import confetti library
+import { FaUserGraduate } from 'react-icons/fa6';
 
 const BottomNavBar = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -68,7 +69,7 @@ const BottomNavBar = () => {
             </div>
           )}
           {tab === 'My' && <FaBookOpen className="nav-link-icon" size={20} />}
-          {tab === 'Profile' && <FaCog className="nav-link-icon" size={20} />}
+          {tab === 'Profile' && <FaUserGraduate className="nav-link-icon" size={20} />}
           {activeTab === tab && (
             <span className="text-xs mt-1">
               {tab.charAt(0).toUpperCase() + tab.slice(1)}

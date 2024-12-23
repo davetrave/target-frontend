@@ -29,7 +29,8 @@ const TelegramLogin = () => {
                     localStorage.setItem('access', response.data.access);
                     localStorage.setItem('refresh', response.data.refresh);
                     localStorage.setItem('username', tgData.username);
-                    localStorage.setItem('first_name', tgData.first_name);
+                    localStorage.setItem('first_name', tgData.firstName);
+                    localStorage.setItem('photo_url', tgData.photoUrl);
                     showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
                     navigate("/");
                 } else {
