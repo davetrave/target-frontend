@@ -28,6 +28,8 @@ const TelegramLogin = () => {
                 if (response.status === 200 || response.status === 201) {
                     localStorage.setItem('access', response.data.access);
                     localStorage.setItem('refresh', response.data.refresh);
+                    localStorage.setItem('username', tgData.username);
+                    localStorage.setItem('first_name', tgData.first_name);
                     showMessage(`Welcome, ${tgData.firstName}! Happy learning`, 'success');
                     navigate("/");
                 } else {

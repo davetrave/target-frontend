@@ -25,7 +25,7 @@ const BottomNavBar = () => {
       });
     };
 
-    const activeIndex = ['home', 'courses', 'My Cart', 'My', 'settings'].indexOf(activeTab);
+    const activeIndex = ['home', 'courses', 'My Cart', 'My', 'Profile'].indexOf(activeTab);
     animateTab(activeIndex);
   }, [activeTab]);
 
@@ -47,7 +47,7 @@ const BottomNavBar = () => {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white flex justify-around items-center py-2 z-30">
-      {['home', 'courses', 'My Cart', 'My', 'settings'].map((tab, index) => (
+      {['home', 'courses', 'My Cart', 'My', 'Profile'].map((tab, index) => (
         <NavLink
           to={`/${tab}`}
           key={tab}
@@ -68,7 +68,7 @@ const BottomNavBar = () => {
             </div>
           )}
           {tab === 'My' && <FaBookOpen className="nav-link-icon" size={20} />}
-          {tab === 'settings' && <FaCog className="nav-link-icon" size={20} />}
+          {tab === 'Profile' && <FaCog className="nav-link-icon" size={20} />}
           {activeTab === tab && (
             <span className="text-xs mt-1">
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
