@@ -132,8 +132,6 @@ const Settings = () => {
               <h1 className="text-sm font-bold ml-3">Courses Purchased and Awaiting Approval : 
                 {userData.courses_awaiting_approval}
               </h1>
-            </div>
-            <div className='alphacard mb-60'>
               <h1 className="text-sm font-bold ml-3">Courses Purchased : 
                 {userData.courses_purchased}
               </h1>
