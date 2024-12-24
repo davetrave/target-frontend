@@ -87,7 +87,7 @@ const Settings = () => {
 
     return (
       <>
-        <div className="relative w-full h-screen flex flex-col justify-start  text-white bg-gray-900 overflow-hidden">
+        <div className="relative w-full h-screen flex flex-col justify-start  text-white bg-gray-900 ">
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
             <div className="gradient absolute top-0 left-0 w-full h-full"></div>
             {Array.from({ length: 100 }).map((_, i) => (
