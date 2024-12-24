@@ -55,6 +55,7 @@ const CourseList = () => {
   const handleAddToCart = async (courseId) => {
     try {
       const response = await addToCart(courseId);
+      console.log(response)
       if (response.error){
         showMsg(response.detail, 'error');
       }
