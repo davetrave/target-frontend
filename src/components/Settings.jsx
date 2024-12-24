@@ -104,7 +104,7 @@ const Settings = () => {
           </div>
           <div className='alphacard mt-6'>
               <UserAvatar name={avatar} photoUrl={photoUrl}/>
-              <h1 className="inline-block text-2xl font-bold ml-3">
+              <h1 className="inline-block text-lg font-bold ml-3">
                 {firstName}{username}</h1>
               
             </div>
