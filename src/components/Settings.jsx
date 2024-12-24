@@ -129,7 +129,7 @@ const Settings = () => {
               </h1>
             </div>
             <div className='alphacard'>
-              <h1 className="text-sm font-bold ml-3">Courses Purchased and Awaiting Approval : 
+              <h1 className="text-sm font-bold ml-3">Courses Purchased and Waiting for Approval : 
                 {userData.courses_awaiting_approval}
               </h1>
               <h1 className="text-sm font-bold ml-3">Courses Purchased : 
