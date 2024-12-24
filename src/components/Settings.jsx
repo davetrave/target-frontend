@@ -105,7 +105,7 @@ const Settings = () => {
           <div className='alphacard mt-6'>
               <UserAvatar name={avatar} photoUrl={photoUrl}/>
               <h1 className="inline-block text-lg font-bold ml-3">
-                {firstName}{username}</h1>
+                {firstName}{username && username}</h1>
               
             </div>
             <div className='alphacard'>
