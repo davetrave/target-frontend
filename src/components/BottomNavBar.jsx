@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaBook, FaCog, FaShoppingCart, FaUniversity, FaCheckDouble, FaBookOpen, FaUserGraduate } from 'react-icons/fa';
+import { FaHome, FaBook, FaCog, FaShoppingCart, FaUniversity, FaCheckDouble, FaBookOpen } from 'react-icons/fa';
 import gsap from 'gsap';
 import { CartContext } from '../context/CartContext';
 import confetti from 'canvas-confetti'; // Import confetti library

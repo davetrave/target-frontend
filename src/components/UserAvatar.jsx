@@ -42,9 +42,9 @@ const generateAvatar = (name) => {
     )
 }
 
-function UserAvatar({name, size=40}) {
+function UserAvatar({name, size=60}) {
   return (
-    <div className='relative' style={{width: size, height: size}}>
+    <div className='relative inline-block' style={{width: size, height: size}}>
         {generateAvatar(name)}
     </div>
   )
