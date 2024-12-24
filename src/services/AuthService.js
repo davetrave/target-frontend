@@ -38,8 +38,7 @@ api.interceptors.response.use(
         }
       } catch (refreshError) {
         // Redirect to login if refresh fails
-        localStorage.removeItem('access');
-        localStorage.removeItem('refresh');
+        localStorage.clear()
         //navigate('/login'); // Use navigate to redirect to login
       }
     }
