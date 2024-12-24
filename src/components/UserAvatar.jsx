@@ -46,7 +46,12 @@ function UserAvatar({name, photoUrl=null, size=60}) {
     if (photoUrl) {
         return (
             <div className='relative inline-block' style={{width: size, height: size}}>
-                <img src = {photoUrl} alt={`${name}'s profile pic` ||  "avatar pic"} className='rounded-full w-full h-full object-cover'/>
+                <div
+                    className="flex items-center justify-center rounded-full text-white,font-bold  w-full h-full"
+                >
+                    <span><img src = {photoUrl} alt={`${name}'s profile pic` ||  "avatar pic"} className='rounded-full object-cover'/></span>
+                </div>
+                
             </div>
         )
     }
