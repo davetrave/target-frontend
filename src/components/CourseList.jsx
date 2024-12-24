@@ -4,10 +4,12 @@ import { gsap } from 'gsap';
 import CourseCard from './CourseCard';
 import { CartContext } from '../context/CartContext';
 import { addToCart, getCart } from '../services/CartService';
+import { useFlashMessage } from "../context/FlashMessageContext";
 import LoadingAnimation from './LoadingAnimation'
 import BottomNavBar from './BottomNavBar';
 
 const CourseList = () => {
+  const showMsg = useFlashMessage();
   const [courses, setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [cart, setCart] = useState([]);
@@ -52,9 +54,15 @@ const CourseList = () => {
 
   const handleAddToCart = async (courseId) => {
     try {
-      await addToCart(courseId);
-      setCartCount((prevCount) => prevCount + 1);
-      setCart([...cart, courseId]); // Update the cart state
+      const response = await addToCart(courseId);
+      if (response.error){
+        showMsg(response.detail, 'error');
+      }
+      else{
+        setCartCount((prevCount) => prevCount + 1);
+        setCart([...cart, courseId]); // Update the cart state
+      }
+      
     } catch (error) {
       console.error('Error adding course to cart:', error);
     }
