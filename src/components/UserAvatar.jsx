@@ -42,12 +42,20 @@ const generateAvatar = (name) => {
     )
 }
 
-function UserAvatar({name, size=60}) {
-  return (
-    <div className='relative inline-block' style={{width: size, height: size}}>
-        {generateAvatar(name)}
-    </div>
-  )
+function UserAvatar({name, photoUrl=null, size=60}) {
+    if (photoUrl) {
+        return (
+            <div className='relative inline-block' style={{width: size, height: size}}>
+                <img src = {photoUrl} alt={`${name}'s profile pic` ||  "avatar pic"} className='rounded-full w-full h-full object-cover'/>
+            </div>
+        )
+    }
+
+    return (
+        <div className='relative inline-block' style={{width: size, height: size}}>
+            {generateAvatar(name)}
+        </div>
+    )
 }
 
 export default UserAvatar

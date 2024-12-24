@@ -31,7 +31,7 @@ const Settings = () => {
       <div className=" p-4 text-white">
         <div className="starry-bg"></div>
         <div className='alphacard'>
-          {photoUrl ? ( <img src={photoUrl} style={{width: 60, height:60}} /> ): (<UserAvatar name={avatar} />)}
+          <UserAvatar name={avatar} photoUrl={photoUrl}/>
           <h1 className="inline-block text-2xl font-bold mb-4 ml-3">
             {firstName}{username}</h1>
           <p>Coming Soon for Awesome Features.</p>
