@@ -111,7 +111,7 @@ const Settings = () => {
             <div className='alphacard'>
               
               <h1 className="text-sm font-bold  ml-3">Date Joined: 
-                {userData.date_joined}
+                {new Date(userData.date_joined).toLocaleString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}
               </h1>
             </div>
             
