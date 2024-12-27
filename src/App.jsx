@@ -14,6 +14,7 @@ import TelegramLogin from './components/TelegramLogin';
 import Register from "./components/Register";
 import Protected from "./components/ProtectedRoute";
 import Settings from "./components/Settings"
+import HowToVideo from './components/HowToVideo';
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
             <Route path="/home" exact element={<Protected><LandingPage /></Protected>} />
             <Route path="/courses" exact element={<Protected><CourseList /></Protected>} />
             <Route path="/My Cart" exact element={<Protected><Cart /></Protected>} />
+            
+            <Route path="/how-to-video" exact element={<Protected><HowToVideo /></Protected>} />
             <Route path="/My" exact element={<Protected><MyCourses /></Protected>} />
             <Route path="/Profile" element={<Protected><Settings /></Protected>} />
             <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
