@@ -12,6 +12,7 @@ const HowToVideo = () => {
         const fetchVideoUrl = async () => {
           try {
             const data = await getHintVideoUrl();
+            console.log("data:> ",data);
             setHintVideoUrl(data.url);
             setLoading(false);
           } catch (error) {
