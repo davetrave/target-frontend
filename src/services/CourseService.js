@@ -38,3 +38,8 @@ export const postCourseComment = async (courseId, commentData) => {
   const response = await api.post(`api/courses/${courseId}/comments/`, commentData);
   return response.data;
 };
+
+export const getHintVideoUrl = async () => {
+  const response = await api.get("api/courses/video/hint/");
+  return response.data;
+};

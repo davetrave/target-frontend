@@ -5,8 +5,9 @@ import CourseCard from './CourseCard';
 import { CartContext } from '../context/CartContext';
 import { addToCart, getCart } from '../services/CartService';
 import { useFlashMessage } from "../context/FlashMessageContext";
-import LoadingAnimation from './LoadingAnimation'
+import LoadingAnimation from './LoadingAnimation';
 import BottomNavBar from './BottomNavBar';
+import HintVideoCard from './HintVideoCard';
 
 const CourseList = () => {
   const showMsg = useFlashMessage();
@@ -14,6 +15,7 @@ const CourseList = () => {
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cartBeingAdded, setCartBeingAdded] = useState(false);
   const [gradient, setGradient] = useState('from-purple-600 via-pink-500 to-purple-700');
   const { setCartCount, updatePurchasedCourses } = useContext(CartContext);
 
@@ -53,19 +55,20 @@ const CourseList = () => {
   };
 
   const handleAddToCart = async (courseId) => {
+    setCartBeingAdded(true);
     try {
+      
       const response = await addToCart(courseId);
-      console.log(response)
-      if (response.error){
-        showMsg(response.detail, 'error');
-      }
-      else{
+      console.log("CART RESP:> ", response)
         setCartCount((prevCount) => prevCount + 1);
         setCart([...cart, courseId]); // Update the cart state
-      }
+      
       
     } catch (error) {
       console.error('Error adding course to cart:', error);
+    }
+    finally {
+      setCartBeingAdded(false);
     }
   };
 
@@ -105,7 +108,7 @@ const CourseList = () => {
         </div> */}
 
         {/* Course Cards */}
-        
+        <HintVideoCard />
         { loading ? (<LoadingAnimation/>) : 
         (filteredCourses.map((course) => (
           <div className='m-2'>
