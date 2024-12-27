@@ -23,7 +23,8 @@ const HowToVideo = () => {
       }, []);
 
     return (
-        loading ? <LoadingAnimation/> : (
+        <>
+        {loading ? (<LoadingAnimation />) : (
         <div className="w-full h-screen bg-black flex items-center justify-center">
         <ReactPlayer
             url={hintVideoUrl}
@@ -33,7 +34,8 @@ const HowToVideo = () => {
             height="100%"
             style={{ objectFit: 'cover' }}
         />
-        </div>)
+        </div>)}
+        </>
     );
 };
 
