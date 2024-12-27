@@ -6,7 +6,6 @@ import LoadingAnimation from './LoadingAnimation';
 
 const HowToVideo = () => {
     const [hintVideoUrl, setHintVideoUrl] = useState('');
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchVideoUrl = async () => {
@@ -14,7 +13,6 @@ const HowToVideo = () => {
             const data = await getHintVideoUrl();
             console.log("data:> ",data);
             setHintVideoUrl(data.url);
-            setLoading(false);
           } catch (error) {
             console.error('Error fetching hint video URL:', error);
           }
@@ -23,19 +21,23 @@ const HowToVideo = () => {
         fetchVideoUrl();
       }, []);
 
+    if (!hintVideoUrl) {
+        return <LoadingAnimation />
+    }
+
     return (
         <>
-        {loading ? (<LoadingAnimation />) : (
-        <div className="w-full h-screen bg-black flex items-center justify-center">
-        <ReactPlayer
-            url={hintVideoUrl}
-            playing
-            controls
-            width="100%"
-            height="100%"
-            style={{ objectFit: 'cover' }}
-        />
-        </div>)}
+        
+            <div className="w-full h-screen bg-black flex items-center justify-center">
+            <ReactPlayer
+                url={hintVideoUrl}
+                playing
+                controls
+                width="100%"
+                height="100%"
+                style={{ objectFit: 'cover' }}
+            />
+            </div>
         </>
     );
 };
