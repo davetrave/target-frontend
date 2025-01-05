@@ -13,7 +13,7 @@ const HintVideoCard = () => {
       onClick={handleCardClick}
       className="w-full h-24 bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 animate-gradient-x cursor-pointer flex items-center justify-center"
     >
-      <h3 className="text-white text-xl font-bold">Click Here to Watch how to use the App</h3>
+      <h3 className="text-white text-sm font-bold">Click Here to Watch how to use the App</h3>
     </div>
   );
 };
