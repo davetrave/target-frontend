@@ -5,7 +5,7 @@ import LoadingAnimation from './LoadingAnimation'
 import { useFlashMessage } from "../context/FlashMessageContext";
 import { getUserData } from '../services/UserService'
 
-const Settings = () => {
+const Profile = () => {
   const showMessage = useFlashMessage()
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -143,4 +143,4 @@ const Settings = () => {
     );
   };
 
-  export default Settings
+  export default Profile

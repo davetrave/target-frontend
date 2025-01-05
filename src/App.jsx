@@ -13,7 +13,7 @@ import Login from './components/Login';
 import TelegramLogin from './components/TelegramLogin';
 import Register from "./components/Register";
 import Protected from "./components/ProtectedRoute";
-import Settings from "./components/Settings"
+import Profile from "./components/Profile"
 import HowToVideo from './components/HowToVideo';
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
             
             <Route path="/how-to-video" exact element={<Protected><HowToVideo /></Protected>} />
             <Route path="/My" exact element={<Protected><MyCourses /></Protected>} />
-            <Route path="/Profile" element={<Protected><Settings /></Protected>} />
+            <Route path="/Profile" element={<Protected><Profile /></Protected>} />
             <Route path="/course/:id" element={<Protected><CourseDetail /></Protected>} />
             <Route path="/course/overview/:id" element={<Protected><CourseOverview /></Protected>} />
             <Route path="/login" exact element={<Login />} />
