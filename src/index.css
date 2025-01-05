@@ -419,7 +419,7 @@ nav .nav-link:hover .nav-link-icon {
 .badge {
   width: 16px;
   height: 16px;
-  background-color: yellow;
+  background-color: orangered;
   border-radius: 50%;
   animation: pulsate 1s infinite;
 }

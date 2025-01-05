@@ -28,15 +28,19 @@ const HowToVideo = () => {
     return (
         <>
         
-            <div className="w-full h-screen bg-black flex items-center justify-center">
-            <ReactPlayer
-                url={hintVideoUrl}
-                playing
-                controls
-                width="100%"
-                height="100%"
-                style={{ objectFit: 'cover' }}
-            />
+            <div className="relative w-full h-screen bg-black flex items-center justify-center">
+              <ReactPlayer
+                  url={hintVideoUrl}
+                  playing
+                  controls
+                  width="100%"
+                  height="100%"
+                  style={{ objectFit: 'cover' }}
+              />
+              <div 
+                className="absolute top-0 left-0 w-full h-full bg-transparent" 
+                style={{ pointerEvents: 'auto' }} >
+              </div>
             </div>
         </>
     );
